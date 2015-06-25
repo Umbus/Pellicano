@@ -11,33 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624135326) do
+ActiveRecord::Schema.define(version: 20150625193523) do
 
-  create_table "articles", force: :cascade do |t|
-    t.string   "title"
+  create_table "articles", force: true do |t|
+    t.string   "title",      limit: nil
     t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "commenter"
+  create_table "comments", force: true do |t|
+    t.string   "commenter",  limit: nil
     t.text     "body"
     t.integer  "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id"
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "password_digest"
+  create_table "users", force: true do |t|
+    t.string   "name",            limit: nil
+    t.string   "email",           limit: nil
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "password_digest", limit: nil
+    t.string   "remember_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

@@ -20,6 +20,9 @@ group :development, :test do
   # gem 'childprocess', '0.3.6'
 end
 
+gem 'test-unit'
+gem 'minitest'
+
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
